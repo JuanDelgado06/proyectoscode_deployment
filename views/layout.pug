@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        include partials/header
+    body
+        header.barra
+            h1 
+                a(href="/") Morito Inc - Administrador de Proyectos
+            a(href="/cerrar-sesion") Cerrar Sesión
+        
+        main.contenedor
+            aside.contenedor-proyectos
+                .panel.crear-proyecto
+                    a(href="/nuevo-proyecto").boton Nuevo Proyecto
+                        span +
+                .panel.lista-proyectos
+                    h2 Proyectos
+                    ul#proyectos.proyectos
+                        if(proyectos.length)
+                            each proyecto in proyectos
+                                li
+                                    a(href=`/proyectos/${proyecto.url}`)= proyecto.nombre    
+                            
+            block contenido 
+
+        //Añadiendo webpack al proyecto
+        script(src="/dist/bundle.js")
+        
+            //pre= vardump(proyectos)
+
